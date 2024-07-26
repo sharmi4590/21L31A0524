@@ -44,12 +44,12 @@ const AP = () => {
   const filteredProducts = products.slice((page - 1) * itemsPerPage, page * itemsPerPage);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-4xl font-bold text-center mb-8">Top Products</h1>
-      <div className="flex justify-center mb-6">
-        <label className="mr-4">
-          Company:
-          <select name="company" onChange={handleFilterChange} className="ml-2 p-2 border rounded">
+    <div className="min-h-screen bg-gray-100 p-4 md:p-6">
+      <h1 className="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8">Top Products</h1>
+      <div className="flex flex-col md:flex-row justify-center mb-4 md:mb-6 space-y-4 md:space-y-0 md:space-x-4">
+        <label className="flex flex-col md:flex-row items-center">
+          <span className="mr-2">Company:</span>
+          <select name="company" onChange={handleFilterChange} className="p-2 border rounded">
             <option value="AMZ">AMZ</option>
             <option value="FLP">FLP</option>
             <option value="SNP">SNP</option>
@@ -57,28 +57,28 @@ const AP = () => {
             <option value="AZO">AZO</option>
           </select>
         </label>
-        <label className="mr-4">
-          Category:
-          <select name="category" onChange={handleFilterChange} className="ml-2 p-2 border rounded">
+        <label className="flex flex-col md:flex-row items-center">
+          <span className="mr-2">Category:</span>
+          <select name="category" onChange={handleFilterChange} className="p-2 border rounded">
             <option value="Laptop">Laptop</option>
             <option value="Phone">Phone</option>
             <option value="TV">TV</option>
             <option value="Earphone">Earphone</option>
           </select>
         </label>
-        <label className="mr-4">
-          Min Price:
-          <input type="number" name="minPrice" value={filters.minPrice} onChange={handleFilterChange} className="ml-2 p-2 border rounded" />
+        <label className="flex flex-col md:flex-row items-center">
+          <span className="mr-2">Min Price:</span>
+          <input type="number" name="minPrice" value={filters.minPrice} onChange={handleFilterChange} className="p-2 border rounded" />
         </label>
-        <label className="mr-4">
-          Max Price:
-          <input type="number" name="maxPrice" value={filters.maxPrice} onChange={handleFilterChange} className="ml-2 p-2 border rounded" />
+        <label className="flex flex-col md:flex-row items-center">
+          <span className="mr-2">Max Price:</span>
+          <input type="number" name="maxPrice" value={filters.maxPrice} onChange={handleFilterChange} className="p-2 border rounded" />
         </label>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {filteredProducts.map((product) => (
           <div key={product.productId} className="bg-white p-4 rounded shadow">
-            <h2 className="text-xl font-bold">{product.productName}</h2>
+            <h2 className="text-lg md:text-xl font-bold">{product.productName}</h2>
             <p>Price: {product.price}</p>
             <p>Rating: {product.rating}</p>
             <p>Discount: {product.discount}%</p>
