@@ -9,8 +9,6 @@ const PD = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        // Fetch product details using the product ID
-        // Assuming there is an API endpoint for fetching a specific product by ID
         const response = await axios.get(`http://20.244.56.144/test/product/${id}`);
         setProduct(response.data);
       } catch (error) {
@@ -21,17 +19,19 @@ const PD = () => {
     fetchProduct();
   }, [id]);
 
-  if (!product) return <div>Loading...</div>;
+  if (!product) return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
 
   return (
-    <div>
-      <h1>{product.productName}</h1>
-      <p>Company: {product.company}</p>
-      <p>Category: {product.category}</p>
-      <p>Price: {product.price}</p>
-      <p>Rating: {product.rating}</p>
-      <p>Discount: {product.discount}%</p>
-      <p>Availability: {product.availability}</p>
+    <div className="min-h-screen bg-gray-100 p-6">
+      <h1 className="text-4xl font-bold text-center mb-8">{product.productName}</h1>
+      <div className="bg-white p-6 rounded shadow-md mx-auto max-w-lg">
+        <p className="mb-4"><span className="font-bold">Company:</span> {product.company}</p>
+        <p className="mb-4"><span className="font-bold">Category:</span> {product.category}</p>
+        <p className="mb-4"><span className="font-bold">Price:</span> {product.price}</p>
+        <p className="mb-4"><span className="font-bold">Rating:</span> {product.rating}</p>
+        <p className="mb-4"><span className="font-bold">Discount:</span> {product.discount}%</p>
+        <p className="mb-4"><span className="font-bold">Availability:</span> {product.availability}</p>
+      </div>
     </div>
   );
 };
